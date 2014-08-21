@@ -1,0 +1,137 @@
+#builder-css textarea
+{
+    resize: none;
+}
+
+#builder-css
+{
+    width: 600px;
+    padding: 12px;
+    background: #d4d0c8;
+    font-family: "Segoe UI", Arial, Sans-serif;
+    margin: 48px auto;
+    visibility: visible !important;
+    cursor: default;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -moz-box-shadow: 0 0 4px 0 #333;
+    -webkit-box-shadow: 0 0 4px 0 #333;
+    box-shadow: 0 0 4px 0 #333;
+}
+
+#builder-css button::-moz-focus-inner
+{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: none;
+}
+
+#builder-css .builder-css-panel-hidden
+{
+    display: none;
+}
+
+#builder-css h2
+{
+    font-size: 24px;
+    line-height: 24px;
+    padding: 0 0 8px 0;
+}
+
+#builder-css h2,
+#builder-css h3,
+#builder-css .builder-css-credits
+{
+    color: #333;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#builder-css h3
+{
+    font-size: 16px;
+    line-height: 16px;
+    cursor: pointer;
+    margin: 8px 0;
+}
+
+#builder-css h3::before
+{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    border: solid 5px transparent;
+    border-left-color: #666;
+    content: "";
+    vertical-align: baseline;
+    margin: 0 8px 0 0;
+}
+
+#builder-css .builder-css-panel-selected::before
+{
+    border: solid 5px transparent;
+    border-bottom-color: #666;
+    position: relative;
+    left: -2px;
+    top: -4px;
+}
+
+#builder-css .builder-css-panel
+{
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    padding: 8px;
+    background: #e4e1dc;
+    border: solid 1px #ccc;
+    -moz-box-shadow: 0 0 2px #333 inset;
+    -webkit-box-shadow: 0 0 2px #333 inset;
+    box-shadow: 0 0 2px #333 inset;
+}
+
+#builder-css label
+{
+    font-size: 11px;
+}
+
+#builder-css input,
+#builder-css label,
+#builder-css textarea
+{
+    vertical-align: middle;
+}
+
+#builder-css textarea,
+#builder-css input[type="text"]
+{
+    display: block;
+    border: solid 1px #a2a2a2;
+    margin: 8px 0 0;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+#builder-css input[type="text"]
+{
+    width: 572px;
+    padding: 4px;
+    font: normal 12px "Segoe UI", Arial, Sans-serif;
+}
+
+#builder-css textarea
+{
+    width: 580px;
+    height: 200px;
+    font: normal 12px "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier;
+    color: #069;
+}
+
+#builder-css label
+{
+    cursor: pointer;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	
+  <head>
+  	<!-- meta -->
+  	<%
+  	_.each(metaTagContentArr, function(tag) {
+  		%><meta name="<%= tag.name %>" content="<%= tag.content %>" /><%
+  		});
+  	%>
+
+  	<!-- CSS -->
+  	<style type="text/css">
+  		<%= concatCssStr %>
+  	</style>
+
+  	<!-- JS: library_code: external/app-independent -->
+  	<script type="text/javascript">
+  		<%= concatJsLibraryCode %>
+  	</script>
+
+
+  	<!-- JS: application_code: internal/app-dependent -->
+  	<script type="text/javascript" >
+  		<%= concatJsApplicationCode %>
+  	</script>
+
+  	<!-- XElements -->
+  	<script type="text/javascript" src="<%= xelementsFileName %>"></script>
+
+
+  	<!-- In-browser Templates -->
+  	<%
+		_.each(clientTemplateContentArr, function(t) {
+			%>
+			<script id="<%= t.id %>" type="<%= t.type %>">
+	  		<%= t.content %>
+	  	</script>
+		<% }); %>
+
+
+  	<!-- JS: launch_code: on load -->
+    <script type="text/javascript">
+    	<%= concatJsLaunchCode %>
+    </script>
+
+    <title><%= pageTitle %></title>
+  </head>
+
+  <body <%= body.attrs %>>
+  	<%= body.content %>
+  </body>
+
+</html>

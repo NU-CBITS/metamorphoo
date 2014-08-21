@@ -1,0 +1,23 @@
+html,
+body,
+#builder-css h2,
+#builder-css h3,
+#builder-css h4,
+#builder-css ul,
+#builder-css li,
+#builder-css p,
+#builder-css input,
+#builder-css textarea,
+#builder-css button,
+#builder-css form
+{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-weight: normal;
+}
+
+body
+{
+    overflow-y: scroll;
+}

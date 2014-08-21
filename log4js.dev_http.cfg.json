@@ -1,0 +1,10 @@
+{
+  "appenders": [
+    {
+      "type": "file",
+      "filename": "/home/samba/dev/metamorphoo/logs/metamorphoo.dev_http.log",
+      "maxLogSize": 102400000,
+      "backups": 20
+    }
+  ]
+}

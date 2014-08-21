@@ -1,0 +1,61 @@
+#builder-css button
+{
+    border: 0;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fefefe", endColorstr="#666666");
+    -moz-box-shadow: 0 0 3px #666;
+    -webkit-box-shadow: 0 0 3px #666;
+    box-shadow: 0 0 3px #666;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: -moz-linear-gradient(#fefefe, #666);
+    background: -webkit-linear-gradient(#fefefe, #666);
+    background: -o-linear-gradient(#fefefe, #666);
+    background: -ms-linear-gradient(#fefefe, #666);
+    background: linear-gradient(#fefefe, #666);
+    height: 22px;
+    overflow: hidden;
+}
+
+#builder-css button:not(:disabled):hover
+{
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fefefe", endColorstr="#555555");
+    background: -moz-linear-gradient(#fefefe, #555);
+    background: -webkit-linear-gradient(#fefefe, #555);
+    background: -o-linear-gradient(#fefefe, #555);
+    background: -ms-linear-gradient(#fefefe, #555);
+    background: linear-gradient(#fefefe, #555);
+}
+
+#builder-css button:not(:disabled):active
+{
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#666666", endColorstr="#fefefe");
+    background: -moz-linear-gradient(#666, #fefefe);
+    background: -webkit-linear-gradient(#666, #fefefe);
+    background: -o-linear-gradient(#666, #fefefe);
+    background: -ms-linear-gradient(#666, #fefefe);
+    background: linear-gradient(#666, #fefefe);
+}
+
+#builder-css button:disabled
+{
+    -moz-opacity: .6;
+    -webkit-opacity: .6;
+    opacity: .6;
+    cursor: no-drop;
+}
+
+#builder-css button span
+{
+    font: normal 14px/22px "Segoe UI", Arial, Sans-serif;
+    height: 22px;
+    display: block;
+    width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #333;
+    -moz-box-shadow: 0 0 1px #fff inset;
+    -webkit-box-shadow: 0 0 1px #fff inset;
+    box-shadow: 0 0 1px #fff inset;
+}

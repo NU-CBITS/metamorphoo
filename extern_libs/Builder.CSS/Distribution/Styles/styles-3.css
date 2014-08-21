@@ -1,0 +1,124 @@
+#builder-css label input[type="checkbox"],
+#builder-css label input[type="radio"],
+#builder-css label input[type="checkbox"] + span,
+#builder-css label input[type="radio"] + span,
+#builder-css label input[type="checkbox"] + span::before,
+#builder-css label input[type="radio"] + span::before
+{
+    vertical-align: middle;
+}
+
+#builder-css label input[type="checkbox"],
+#builder-css label input[type="radio"]
+{
+    position: absolute;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    -webkit-opacity: 0;
+    opacity: 0;
+}
+
+#builder-css label input[type="checkbox"] + span,
+#builder-css label input[type="radio"] + span,
+#builder-css label input[type="checkbox"] + span::before,
+#builder-css label input[type="radio"] + span::before
+{
+    display: inline-block;
+}
+
+#builder-css label input[type="checkbox"] + span,
+#builder-css label input[type="radio"] + span
+{
+    font: normal 13px/14px "Segoe UI", Sans-serif;
+}
+
+#builder-css label input[type="checkbox"] + span::before
+{
+    content: "\2714";
+}
+
+#builder-css label input[type="checkbox"] + span::before,
+#builder-css label input[type="radio"] + span::before
+{
+    text-indent: -9999px;
+    width: 12px;
+    height: 12px;
+    font: bold 12px/12px Garamond, "Segoe UI", Sans-serif;
+    text-transform: uppercase;
+    border: solid 1px #666;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: 0 0 1px 1px #ccc;
+    -webkit-box-shadow: 0 0 1px 1px #ccc;
+    box-shadow: 0 0 1px 1px #ccc;
+    background: #333;
+    background: -moz-linear-gradient(-45deg, #fefefe, #333);
+    background: -webkit-linear-gradient(-45deg, #fefefe, #333);
+    background: -o-linear-gradient(-45deg, #fefefe, #333);
+    background: -ms-linear-gradient(-45deg, #fefefe, #333);
+    background: linear-gradient(-45deg, #fefefe, #333);
+    margin: 0 4px 0 0;
+}
+
+#builder-css label:hover input[type="checkbox"]:not(:disabled) + span::before,
+#builder-css label:hover input[type="radio"]:not(:disabled) + span::before
+{
+    background: #333;
+    background: -moz-linear-gradient(45deg, #fefefe, #333);
+    background: -webkit-linear-gradient(45deg, #fefefe, #333);
+    background: -o-linear-gradient(45deg, #fefefe, #333);
+    background: -ms-linear-gradient(45deg, #fefefe, #333);
+    background: linear-gradient(45deg, #fefefe, #333);
+    box-shadow: 0 0 1px 2px #ccc;
+}
+
+#builder-css label input[type="checkbox"]:checked + span::before,
+#builder-css label input[type="radio"]:checked + span::before
+{
+    text-indent: 2px;
+    color: #fff;
+    text-shadow: 0 0 2px #000;
+}
+
+#builder-css label input[type="radio"] + span::before
+{
+    content: "\2022";
+    font-size: 22px;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+}
+
+#builder-css label input[type="radio"]:checked + span::before
+{
+    text-indent: 2px;
+}
+
+#builder-css label input[type="checkbox"]:disabled + span::before,
+#builder-css label input[type="radio"]:disabled + span::before
+{
+    filter: alpha(opacity=50);
+    -moz-opacity: .5;
+    -webkit-opacity: .5;
+    opacity: .5;
+    cursor: no-drop;
+}
+
+#builder-css label input[type="checkbox"]:disabled + span,
+#builder-css label input[type="radio"]:disabled + span,
+#builder-css label input[type="checkbox"]:disabled + span::before,
+#builder-css label input[type="radio"]:disabled + span::before
+{
+    cursor: default;
+}
+
+#builder-css input[type="checkbox"]:not(:checked) + span
+{
+    color: #666;
+}
+
+#builder-css .builder-css-items-list input[type="checkbox"]:not(:checked) + span
+{
+    text-decoration: line-through;
+}
