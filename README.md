@@ -5,9 +5,9 @@ metamorphoo
 
 * Latin for “metamorphosis”.
 * Is a multi-process Node.js app.
-* Best known (starting late 2012) and most often used to run the half of Purple Robot Importer process that performs the JSON → SQL conversion. The other half is found in [Trireme][https://github.com/cbitstech/trireme], specifically code pertaining to the Dingo module ([controller][https://github.com/cbitstech/trireme/blob/master/controllers/dingo_controller.js]).
+* Best known (starting late 2012) and most often used to run the half of Purple Robot Importer process that performs the JSON → SQL conversion. The other half is found in [Trireme](https://github.com/cbitstech/trireme), specifically code pertaining to the Dingo module ([controller](https://github.com/cbitstech/trireme/blob/master/controllers/dingo_controller.js)).
 * Original (circa mid-2012) purpose was to transform data: A → f(A) → B.
-* Originally (circa mid-2012) intended to also provide web services to handle backend business logic, but not data access. Data access was to be handled by [Trireme][https://github.com/cbitstech/trireme].
+* Originally (circa mid-2012) intended to also provide web services to handle backend business logic, but not data access. Data access was to be handled by [Trireme](https://github.com/cbitstech/trireme).
 * Something of a grab-bag of functionality developed by CBITS for various projects. Again, you're probably here for Purple Robot Importer.
 
 Introduction aside, let's take typical concerns in reverse order:
@@ -21,12 +21,12 @@ What we'll do below is configure two instances of Metamorphoo: one for HTTP call
 
 0. Ensure you have satisfied the following dependencies:
   0. You are running Linux.
-  1. [Node.js][http://nodejs.org/download/] is installed system-wide/globally. Metamorphoo known to run using [v0.10.12][http://nodejs.org/dist/v0.10.12/].
-  2. [Trireme][https://github.com/cbitstech/trireme] is installed and running.
-    * NOTE: For legacy reasons, [MongoDB][http://www.mongodb.org/downloads] must be installed and running, since Trireme will not start without it.
-  2. [Forever][https://github.com/nodejitsu/forever] is installed system-wide/globally.
-  3. [Purple Robot Notification Manager (PRNM)][https://github.com/cbitstech/purple_robot_notification_manager/blob/master/PurpleRobotNotificationManager/PurpleRobotNotificationManager.js] exists (optional but recommended). Referenced in the configuration below. Unless you're using Metamorphoo to generate Purple Robot configuration files for use by PRNM, you don't need this. But the variable referencing this *must* be defined in the config file, and if you wish to supply a reference to the actual file necessary, this is what you need.
-  4. [Postgres][http://www.postgresql.org/download/] 9.2 or greater is installed and running and can successfully be queried from the host on which Trireme is installed. (Metamorphoo may work with older versions, e.g. 8.x, but this has not been tested.)
+  1. [Node.js](http://nodejs.org/download/) is installed system-wide/globally. Metamorphoo known to run using [v0.10.12](http://nodejs.org/dist/v0.10.12/).
+  2. [Trireme](https://github.com/cbitstech/trireme) is installed and running.
+    * NOTE: For legacy reasons, [MongoDB](http://www.mongodb.org/downloads) must be installed and running, since Trireme will not start without it.
+  2. [Forever](https://github.com/nodejitsu/forever) is installed system-wide/globally.
+  3. [Purple Robot Notification Manager (PRNM)](https://github.com/cbitstech/purple_robot_notification_manager/blob/master/PurpleRobotNotificationManager/PurpleRobotNotificationManager.js) exists (optional but recommended). Referenced in the configuration below. Unless you're using Metamorphoo to generate Purple Robot configuration files for use by PRNM, you don't need this. But the variable referencing this *must* be defined in the config file, and if you wish to supply a reference to the actual file necessary, this is what you need.
+  4. [Postgres](http://www.postgresql.org/download/) 9.2 or greater is installed and running and can successfully be queried from the host on which Trireme is installed. (Metamorphoo may work with older versions, e.g. 8.x, but this has not been tested.)
 1. Into some absolute folder path FolderA, download or clone this repo. Your folder structure should then be FolderA/metamorphoo.
 2. Into some absolute folder path FolderA, download or clone Trireme. Your folder structure should then be FolderA/trireme.
 3. Into some absolute folder path FolderA, create a folder "configs".
@@ -272,12 +272,12 @@ forever start $ROOT/metamorphoo/launch.forever.js $ROOT/configs/metamorphoo.json
 
 # Purple Robot Importer (PRI)? What Is That and Why Should I Care?
 
-PRI is the JSON-to-SQL transformation layer used in data collection backend at CBITS. Conceptually, it is a purpose-specific object-relational mapper designed to take arbitrary data of unknown structure, and store it in a SQL-based RDBMS. A lengthier description can be found [here][http://tech.cbits.northwestern.edu/2013/10/04/purple-robot-importer-purple-robot-warehouse/].
+PRI is the JSON-to-SQL transformation layer used in data collection backend at CBITS. Conceptually, it is a purpose-specific object-relational mapper designed to take arbitrary data of unknown structure, and store it in a SQL-based RDBMS. A lengthier description can be found [here](http://tech.cbits.northwestern.edu/2013/10/04/purple-robot-importer-purple-robot-warehouse/).
 
 There are (at least) two available clients to PRI:
 
-1. [Purple Robot][https://github.com/cbitstech/Purple-Robot] - A background-running, context-sensing Android application.
-2. [Purple Robot Client][https://github.com/cbitstech/PurpleRobotClient] - A Javascript library enabling JS apps to submit data (such as form responses) to PRI.
+1. [Purple Robot](https://github.com/cbitstech/Purple-Robot) - A background-running, context-sensing Android application.
+2. [Purple Robot Client](https://github.com/cbitstech/PurpleRobotClient) - A Javascript library enabling JS apps to submit data (such as form responses) to PRI.
 
 As input: PRI takes an payload conforming to a minimal spec, which is otherwise arbitrary in its contents.
 
@@ -288,4 +288,4 @@ As output: PRI produces a set of INSERT statements to a SQL database. CBITS uses
 
 Chances are you're here for the Purple Robot Importer functionality.
 
-If you need something else from this project, you probably work for [CBITS][http://cbits.northwestern.edu], where Metamorphoo was created.
+If you need something else from this project, you probably work for [CBITS](http://cbits.northwestern.edu), where Metamorphoo was created.
