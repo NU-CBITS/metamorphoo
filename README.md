@@ -3,10 +3,10 @@ metamorphoo
 
 # What Is It?
 
-* Latin for “metamorphosis”.
+* Latin for "metamorphosis".
 * Is a multi-process Node.js app.
-* Best known (starting late 2012) and most often used to run the half of Purple Robot Importer process that performs the JSON → SQL conversion. The other half is found in [Trireme](https://github.com/cbitstech/trireme), specifically code pertaining to the Dingo module ([controller](https://github.com/cbitstech/trireme/blob/master/controllers/dingo_controller.js)).
-* Original (circa mid-2012) purpose was to transform data: A → f(A) → B.
+* Best known (starting late 2012) and most often used to run the half of Purple Robot Importer process that performs the JSON \0x2192 SQL conversion. The other half is found in [Trireme](https://github.com/cbitstech/trireme), specifically code pertaining to the Dingo module ([controller](https://github.com/cbitstech/trireme/blob/master/controllers/dingo_controller.js)).
+* Original (circa mid-2012) purpose was to transform data: A \0x2192 f(A) \0x2192 B.
 * Originally (circa mid-2012) intended to also provide web services to handle backend business logic, but not data access. Data access was to be handled by [Trireme](https://github.com/cbitstech/trireme).
 * Something of a grab-bag of functionality developed by CBITS for various projects. Again, you're probably here for Purple Robot Importer.
 
@@ -31,6 +31,7 @@ What we'll do below is configure two instances of Metamorphoo: one for HTTP call
 2. Into some absolute folder path FolderA, download or clone Trireme. Your folder structure should then be FolderA/trireme.
 3. Into some absolute folder path FolderA, create a folder "configs".
 4. Create the file: FolderA/configs/trireme.json, like this:
+  
   ```
   {
     "dev":
@@ -85,6 +86,7 @@ What we'll do below is configure two instances of Metamorphoo: one for HTTP call
   }
   ```
 5. Create the file: FolderA/configs/metamorphoo.json, like this:
+  
   ```
   {
     "_commentDev": "Metamorphoo, HTTP dev instance",
@@ -238,6 +240,7 @@ What we'll do below is configure two instances of Metamorphoo: one for HTTP call
   }
   ```
 6. Edit the log4js files at FolderA/metamorphoo/log4js.dev_http.cfg.json and FolderA/metamorphoo/log4js.dev_https.cfg.json. These configure the upper limits of the logging performed by Metamorphoo, for each instance (HTTP and HTTPS). In the configuration below, each instance is allocated a maximum of 100MB per log file * 20 files = 2GB of logs. Since there will be 2 instances of Metamorphoo running (one each for HTTP and HTTPS), this amounts to 4GB of logs. Adjust accordingly. For the HTTP instance:
+  
   ```
   {
     "appenders": [
@@ -251,6 +254,7 @@ What we'll do below is configure two instances of Metamorphoo: one for HTTP call
   }
   ```
 7. Into folder FolderA, save a Bash script like this one as e.g. "restartMetamorphooAndTrireme.bash":
+  
   ```bash
   #!/bin/bash
 
