@@ -31,242 +31,242 @@ What we'll do below is configure two instances of Metamorphoo: one for HTTP call
 2. Into some absolute folder path FolderA, download or clone Trireme. Your folder structure should then be FolderA/trireme.
 3. Into some absolute folder path FolderA, create a folder "configs".
 4. Create the file: FolderA/configs/trireme.json, like this:
-```
-{
-  "dev":
+  ```
   {
-          "comment": "Trireme Development environment",
-          "friendlyName": "Development",
-          "log4js": {
-                  "cfgFilePath": "./configs/log4js.cfg.json"
-          },
-          "mongo":
-          {
-                  "connection":
-                  {
-                          "hostName": "YOUR MONGODB HOSTNAME",
-                          "databaseName": "trireme-dev",
-                          "port": YOUR MONGODB PORT (typically 27017),
-                          "userName": "YOUR MONGODB USERNAME",
-                          "password": "YOUR MONGODB PASSWORD",
-                          "error":
-                          {
-                                  "message": "Internal Error Connecting to Trireme-Dev DB"
-                          },
-                          "shardHostIPs": []
-                  }
-          },
-          "node":
-          {
-            "loadBalancingHostIPs": [],
-            "port": "3337",
-            "ssl": {
-              "enabled": true,
-              "ca": "YOUR SSL CA FILE PATH",
-              "key": "YOUR SSL PRIVATE KEY FILE PATH",
-              "cert": "YOUR SSL CERTIFICATE FILE PATH"
+    "dev":
+    {
+            "comment": "Trireme Development environment",
+            "friendlyName": "Development",
+            "log4js": {
+                    "cfgFilePath": "./configs/log4js.cfg.json"
+            },
+            "mongo":
+            {
+                    "connection":
+                    {
+                            "hostName": "YOUR MONGODB HOSTNAME",
+                            "databaseName": "trireme-dev",
+                            "port": YOUR MONGODB PORT (typically 27017),
+                            "userName": "YOUR MONGODB USERNAME",
+                            "password": "YOUR MONGODB PASSWORD",
+                            "error":
+                            {
+                                    "message": "Internal Error Connecting to Trireme-Dev DB"
+                            },
+                            "shardHostIPs": []
+                    }
+            },
+            "node":
+            {
+              "loadBalancingHostIPs": [],
+              "port": "3337",
+              "ssl": {
+                "enabled": true,
+                "ca": "YOUR SSL CA FILE PATH",
+                "key": "YOUR SSL PRIVATE KEY FILE PATH",
+                "cert": "YOUR SSL CERTIFICATE FILE PATH"
+              }
+            },
+            "logging": {
+              "outputFile": "logs/trireme.log",
+              "maxLogLevel": 4,
+              "maxLogSize": 100000000,
+              "maxLogFileCount": 20
+            },
+            "dingo": {
+              "host": "YOUR POSTGRES HOSTNAME",
+              "port": "YOUR POSTGRES PORT (typically YOUR POSTGRES PORT (typically 5432))",
+              "dbmsName": "postgres",
+              "dbName": "postgres",
+              "userName": "YOUR POSTGRES USERNAME",
+              "userPasswd": "YOUR POSTGRES PASSWORD"
+            }
+    }
+  }
+  ```
+5. Create the file: FolderA/configs/metamorphoo.json, like this:
+  ```
+  {
+    "_commentDev": "Metamorphoo, HTTP dev instance",
+    "dev_http": {
+      "log4js": {
+        "cfgFilePath": "FolderA/metamorphoo/log4js.dev_http.cfg.json"
+      },
+      "friendlyName": "Development",
+      "writePrCfgFile": {
+        "PurpleRobotNotificationManagerScriptPath": "FolderA/purple_medication/PurpleRobotNotificationManager/PurpleRobotNotificationManager.js"
+      },
+      "MetamorphooModules": {
+        "DocumentManagement": {
+          "docList": {
+            "path": "URL TO A GOOGLE SPREADSHEET EXTRACT",
+            "user": "GMAIL ADDRESS TO A GOOGLE SPREADSHEET TO EXTRACT",
+            "password": "PASSWORD TO THE GMAIL ACCOUNT",
+            "accessControlList": {
+              "AccessGroup1": ["AccessGroup1"],
+              "AccessGroup2": ["AccessGroup1", "AccessGroup2"]
             }
           },
-          "logging": {
-            "outputFile": "logs/trireme.log",
-            "maxLogLevel": 4,
-            "maxLogSize": 100000000,
-            "maxLogFileCount": 20
+          "peopleList": {
+            "path": "URL TO A GOOGLE SPREADSHEET EXTRACT",
+            "user": "GMAIL ADDRESS TO A GOOGLE SPREADSHEET TO EXTRACT",
+            "password": "PASSWORD TO THE GMAIL ACCOUNT",
+            "visibleCategories": [ "Category1", "Category2", "Category3"]
+          }
+        },
+        "PrImporter": {
+          "database": {
+            "owner": "postgres"
           },
-          "dingo": {
+          "filePaths": {
+            "logSrcPrefix": "PrImporter"
+          },
+          "network": {
+            "webRequestTTL": 3600000
+          },
+          "dingoPostObj": {
             "host": "YOUR POSTGRES HOSTNAME",
-            "port": "YOUR POSTGRES PORT (typically YOUR POSTGRES PORT (typically 5432))",
+            "port": "YOUR POSTGRES PORT (typically 5432)",
             "dbmsName": "postgres",
             "dbName": "postgres",
-            "userName": "YOUR POSTGRES USERNAME",
-            "userPasswd": "YOUR POSTGRES PASSWORD"
+            "username": "YOUR POSTGRES USERNAME",
+            "user_pw": "YOUR POSTGRES PASSWORD"
+          },
+          "dingoRequestParams": {
+            "host": "YOUR TRIREME HOSTNAME (likely localhost)",
+            "port": YOUR TRIREME PORT (likely 3337),
+            "path": "/dingo",
+            "method": "POST",
+            "headers": {
+              "Content-Type": "application/x-www-form-urlencoded",
+              "Content-Length": -1
+            }
           }
-  }
-}
-```
-5. Create the file: FolderA/configs/metamorphoo.json, like this:
-```
-{
-  "_commentDev": "Metamorphoo, HTTP dev instance",
-  "dev_http": {
-    "log4js": {
-      "cfgFilePath": "FolderA/metamorphoo/log4js.dev_http.cfg.json"
-    },
-    "friendlyName": "Development",
-    "writePrCfgFile": {
-      "PurpleRobotNotificationManagerScriptPath": "FolderA/purple_medication/PurpleRobotNotificationManager/PurpleRobotNotificationManager.js"
-    },
-    "MetamorphooModules": {
-      "DocumentManagement": {
-        "docList": {
-          "path": "URL TO A GOOGLE SPREADSHEET EXTRACT",
-          "user": "GMAIL ADDRESS TO A GOOGLE SPREADSHEET TO EXTRACT",
-          "password": "PASSWORD TO THE GMAIL ACCOUNT",
-          "accessControlList": {
-            "AccessGroup1": ["AccessGroup1"],
-            "AccessGroup2": ["AccessGroup1", "AccessGroup2"]
-          }
-        },
-        "peopleList": {
-          "path": "URL TO A GOOGLE SPREADSHEET EXTRACT",
-          "user": "GMAIL ADDRESS TO A GOOGLE SPREADSHEET TO EXTRACT",
-          "password": "PASSWORD TO THE GMAIL ACCOUNT",
-          "visibleCategories": [ "Category1", "Category2", "Category3"]
         }
       },
-      "PrImporter": {
-        "database": {
-          "owner": "postgres"
-        },
-        "filePaths": {
-          "logSrcPrefix": "PrImporter"
-        },
-        "network": {
-          "webRequestTTL": 3600000
-        },
-        "dingoPostObj": {
-          "host": "YOUR POSTGRES HOSTNAME",
-          "port": "YOUR POSTGRES PORT (typically 5432)",
-          "dbmsName": "postgres",
-          "dbName": "postgres",
-          "username": "YOUR POSTGRES USERNAME",
-          "user_pw": "YOUR POSTGRES PASSWORD"
-        },
-        "dingoRequestParams": {
-          "host": "YOUR TRIREME HOSTNAME (likely localhost)",
-          "port": YOUR TRIREME PORT (likely 3337),
-          "path": "/dingo",
-          "method": "POST",
-          "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Content-Length": -1
-          }
-        }
-      }
-    },
-    "node": {
-      "loadBalancingHostIPs": [],
-      "port": "80",
-      "ssl": {
-        "enabled": false,
-        "ca": "ssl/",
-        "key": "ssl/",
-        "cert": "ssl/",
-        "passphrase": ""
-      }
-    },
-    "trireme": {
-      "hostName": "YOUR TRIREME HOSTNAME (likely localhost)",
-      "port": "YOUR TRIREME PORT (likely 3337)"
-    }
-  },
-
-
-  "_commentDev": "Metamorphoo, HTTPS dev instance",
-  "dev_https": {
-    "log4js": {
-      "cfgFilePath": "FolderA/metamorphoo/log4js.dev_https.cfg.json"
-    },
-    "friendlyName": "Development",
-    "writePrCfgFile": {
-      "PurpleRobotNotificationManagerScriptPath": "FolderA/purple_medication/PurpleRobotNotificationManager/PurpleRobotNotificationManager.js"
-    },
-    "MetamorphooModules": {
-      "DocumentManagement": {
-        "docList": {
-          "path": "URL TO A GOOGLE SPREADSHEET EXTRACT",
-          "user": "GMAIL ADDRESS TO A GOOGLE SPREADSHEET TO EXTRACT",
-          "password": "PASSWORD TO THE GMAIL ACCOUNT",
-          "accessControlList": {
-            "AccessGroup1": ["AccessGroup1"],
-            "AccessGroup2": ["AccessGroup1", "AccessGroup2"]
-          }
-        },
-        "peopleList": {
-          "path": "URL TO A GOOGLE SPREADSHEET EXTRACT",
-          "user": "GMAIL ADDRESS TO A GOOGLE SPREADSHEET TO EXTRACT",
-          "password": "PASSWORD TO THE GMAIL ACCOUNT",
-          "visibleCategories": [ "Category1", "Category2", "Category3"]
+      "node": {
+        "loadBalancingHostIPs": [],
+        "port": "80",
+        "ssl": {
+          "enabled": false,
+          "ca": "ssl/",
+          "key": "ssl/",
+          "cert": "ssl/",
+          "passphrase": ""
         }
       },
-      "PrImporter": {
-        "database": {
-          "owner": "postgres"
+      "trireme": {
+        "hostName": "YOUR TRIREME HOSTNAME (likely localhost)",
+        "port": "YOUR TRIREME PORT (likely 3337)"
+      }
+    },
+
+
+    "_commentDev": "Metamorphoo, HTTPS dev instance",
+    "dev_https": {
+      "log4js": {
+        "cfgFilePath": "FolderA/metamorphoo/log4js.dev_https.cfg.json"
+      },
+      "friendlyName": "Development",
+      "writePrCfgFile": {
+        "PurpleRobotNotificationManagerScriptPath": "FolderA/purple_medication/PurpleRobotNotificationManager/PurpleRobotNotificationManager.js"
+      },
+      "MetamorphooModules": {
+        "DocumentManagement": {
+          "docList": {
+            "path": "URL TO A GOOGLE SPREADSHEET EXTRACT",
+            "user": "GMAIL ADDRESS TO A GOOGLE SPREADSHEET TO EXTRACT",
+            "password": "PASSWORD TO THE GMAIL ACCOUNT",
+            "accessControlList": {
+              "AccessGroup1": ["AccessGroup1"],
+              "AccessGroup2": ["AccessGroup1", "AccessGroup2"]
+            }
+          },
+          "peopleList": {
+            "path": "URL TO A GOOGLE SPREADSHEET EXTRACT",
+            "user": "GMAIL ADDRESS TO A GOOGLE SPREADSHEET TO EXTRACT",
+            "password": "PASSWORD TO THE GMAIL ACCOUNT",
+            "visibleCategories": [ "Category1", "Category2", "Category3"]
+          }
         },
-        "filePaths": {
-          "logSrcPrefix": "PrImporter"
-        },
-        "network": {
-          "webRequestTTL": 3600000
-        },
-        "dingoPostObj": {
-          "host": "YOUR POSTGRES HOSTNAME",
-          "port": "YOUR POSTGRES PORT (typically 5432)",
-          "dbmsName": "postgres",
-          "dbName": "postgres",
-          "username": "YOUR POSTGRES USERNAME",
-          "user_pw": "YOUR POSTGRES PASSWORD"
-        },
-        "dingoRequestParams": {
-          "host": "localhost",
-          "port": 3337,
-          "path": "/dingo",
-          "method": "POST",
-          "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Content-Length": -1
+        "PrImporter": {
+          "database": {
+            "owner": "postgres"
+          },
+          "filePaths": {
+            "logSrcPrefix": "PrImporter"
+          },
+          "network": {
+            "webRequestTTL": 3600000
+          },
+          "dingoPostObj": {
+            "host": "YOUR POSTGRES HOSTNAME",
+            "port": "YOUR POSTGRES PORT (typically 5432)",
+            "dbmsName": "postgres",
+            "dbName": "postgres",
+            "username": "YOUR POSTGRES USERNAME",
+            "user_pw": "YOUR POSTGRES PASSWORD"
+          },
+          "dingoRequestParams": {
+            "host": "localhost",
+            "port": 3337,
+            "path": "/dingo",
+            "method": "POST",
+            "headers": {
+              "Content-Type": "application/x-www-form-urlencoded",
+              "Content-Length": -1
+            }
           }
         }
+      },
+      "node": {
+        "loadBalancingHostIPs": [],
+        "port": "443",
+        "ssl": {
+          "enabled": true,
+          "ca": "YOUR SSL CA FILE PATH",
+          "key": "YOUR SSL PRIVATE KEY FILE PATH",
+          "cert": "YOUR SSL CERTIFICATE FILE PATH",
+          "passphrase": "YOUR SSL PASSPHRASE"
+        }
+      },
+      "trireme": {
+        "hostName": "YOUR TRIREME HOSTNAME (likely localhost)",
+        "port": "YOUR TRIREME PORT (likely 3337)"
       }
-    },
-    "node": {
-      "loadBalancingHostIPs": [],
-      "port": "443",
-      "ssl": {
-        "enabled": true,
-        "ca": "YOUR SSL CA FILE PATH",
-        "key": "YOUR SSL PRIVATE KEY FILE PATH",
-        "cert": "YOUR SSL CERTIFICATE FILE PATH",
-        "passphrase": "YOUR SSL PASSPHRASE"
-      }
-    },
-    "trireme": {
-      "hostName": "YOUR TRIREME HOSTNAME (likely localhost)",
-      "port": "YOUR TRIREME PORT (likely 3337)"
     }
   }
-}
-```
+  ```
 6. Edit the log4js files at FolderA/metamorphoo/log4js.dev_http.cfg.json and FolderA/metamorphoo/log4js.dev_https.cfg.json. These configure the upper limits of the logging performed by Metamorphoo, for each instance (HTTP and HTTPS). In the configuration below, each instance is allocated a maximum of 100MB per log file * 20 files = 2GB of logs. Since there will be 2 instances of Metamorphoo running (one each for HTTP and HTTPS), this amounts to 4GB of logs. Adjust accordingly. For the HTTP instance:
-```
-{
-  "appenders": [
-    {
-      "type": "file",
-      "filename": "FolderA/metamorphoo/logs/metamorphoo.dev_http.log",
-      "maxLogSize": 102400000,
-      "backups": 20
-    }
-  ]
-}
-```
+  ```
+  {
+    "appenders": [
+      {
+        "type": "file",
+        "filename": "FolderA/metamorphoo/logs/metamorphoo.dev_http.log",
+        "maxLogSize": 102400000,
+        "backups": 20
+      }
+    ]
+  }
+  ```
 7. Into folder FolderA, save a Bash script like this one as e.g. "restartMetamorphooAndTrireme.bash":
-```bash
-#!/bin/bash
+  ```bash
+  #!/bin/bash
 
-ROOT="FolderA"
+  ROOT="FolderA"
 
-echo "*** Killing apps ***"
-killall node
-killall forever
+  echo "*** Killing apps ***"
+  killall node
+  killall forever
 
-echo "*** Starting apps ***"
-cd $ROOT/trireme && nohup node $ROOT/trireme/trireme.js $ROOT/configs/trireme.json dev 2>&1 > /dev/null &
-cd $ROOT
+  echo "*** Starting apps ***"
+  cd $ROOT/trireme && nohup node $ROOT/trireme/trireme.js $ROOT/configs/trireme.json dev 2>&1 > /dev/null &
+  cd $ROOT
 
-forever start $ROOT/metamorphoo/launch.forever.js $ROOT/configs/metamorphoo.json dev_https $ROOT/metamorphoo
-forever start $ROOT/metamorphoo/launch.forever.js $ROOT/configs/metamorphoo.json dev_http $ROOT/metamorphoo
-```
+  forever start $ROOT/metamorphoo/launch.forever.js $ROOT/configs/metamorphoo.json dev_https $ROOT/metamorphoo
+  forever start $ROOT/metamorphoo/launch.forever.js $ROOT/configs/metamorphoo.json dev_http $ROOT/metamorphoo
+  ```
 8. Run restartMetamorphooAndTrireme.bash with no parameters. If all is well, you should receive a heartbeat page for Metamorphoo and Trireme, each, for each port on which they are run (Metamorphoo running on ports 80 and 443, above).
 
 
